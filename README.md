@@ -2,7 +2,14 @@
 
   Astro supports opt-in, per-page, view transitions with just a few lines of code. View transitions update your page content without the browser’s normal, full-page navigation refresh and provide seamless animations between pages.
 
+
 [🚀 Astro View Transitions](https://docs.astro.build/en/guides/view-transitions/)
+
+<center>
+  <a href="https://stirring-kringle-466a37.netlify.app/">
+    <img src="./screenshoot.gif" alt="screenshoot">
+  </a>
+</center>
 
 ## 🧞 Commands
 
