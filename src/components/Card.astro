@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: number;
+  title: string;
+  subtitle: string;
+  price: number;
+  image: string;
+}
+
+const { id, title, subtitle, price, image } = Astro.props;
+console.log(image);
+---
+
+<div>
+  <a href=`/products/${id}`>
+    <img
+      class="h-auto max-w-full rounded-lg hover:scale-105 transition"
+      src={image}
+      alt="jordan"
+      transition:name={`nike-image-${id}`}
+    />
+  </a>
+  <div class="w-full">
+    <h1
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      transition:name={`nike-title-${id}`}
+    >
+      {title}
+    </h1>
+    <h3
+      class="font-normal text-gray-700 dark:text-gray-400"
+      transition:name={`nike-subtitle-${id}`}
+    >
+      {subtitle}
+    </h3>
+    <p
+      class="font-bold text-gray-700 dark:text-white"
+      transition:name={`nike-price-${id}`}
+    >
+      ${price}
+    </p>
+  </div>
+</div>
+<div></div>

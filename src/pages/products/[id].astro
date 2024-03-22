@@ -1,0 +1,65 @@
+---
+import DATA from "../../data.js";
+
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return DATA.map((item) => {
+    return {
+      params: {
+        id: item.id,
+      },
+      props: {
+        title: item.title,
+        subtitle: item.subtitle,
+        price: item.price,
+        description: item.description,
+        image: item.image,
+      },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { title, subtitle, price, description, image } = Astro.props;
+---
+
+<Layout title="Welcome to Astro.">
+  <section class="bg-neutral-100 dark:bg-gray-900">
+    <div
+      class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
+    >
+      <img
+        class="w-full"
+        src={image}
+        alt="title"
+        transition:name={`nike-image-${id}`}
+      />
+      <div class="mt-4 md:mt-0">
+        <h1
+          class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          transition:name={`nike-title-${id}`}
+        >
+          {title}
+        </h1>
+        <h3
+          class="mb-6 font-semibold text-gray-500 md:text-lg dark:text-gray-400"
+          transition:name={`nike-subtitle-${id}`}
+        >
+          {subtitle}
+        </h3>
+        <p
+          class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400 text-pretty"
+        >
+          {description}
+        </p>
+        <p
+          class="text-2xl font-bold text-gray-900 dark:text-white"
+          transition:name={`nike-price-${id}`}
+        >
+          ${price}
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="w-full h-16" transition:persist="header">
+  <ul
+    class="flex flex-row justify-center items-center gap-x-8 h-full border-b dark:text-white dark:border-gray-800"
+  >
+    <li>
+      <a href="/">
+        <Icon name="home" size={32} />
+      </a>
+    </li>
+    <li>
+      <span id="themeToggle" class="cursor-pointer">
+        <Icon name="switch" size={32} />
+      </span>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const themeToggle = document.getElementById("themeToggle");
+
+  const getTheme = () => localStorage.getItem("theme") || "light";
+
+  console.log(themeToggle);
+
+  const setTheme = (theme: string) =>
+    document.documentElement.setAttribute("class", theme);
+
+  window.addEventListener("DOMContentLoaded", () => setTheme(getTheme()));
+  document.addEventListener("astro:after-swap", () => setTheme(getTheme()));
+
+  themeToggle!.addEventListener("click", () => {
+    const nextTheme = getTheme() === "light" ? "dark" : "light";
+    localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
+  });
+</script>
